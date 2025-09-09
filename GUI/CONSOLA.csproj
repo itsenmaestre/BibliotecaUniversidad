@@ -54,6 +54,10 @@
       <Project>{51cfe368-39b9-476c-9de1-53353fe445c4}</Project>
       <Name>Entity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Service\APP.csproj">
+      <Project>{1d1dbad5-718d-4221-b47b-7967f6cca044}</Project>
+      <Name>APP</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
