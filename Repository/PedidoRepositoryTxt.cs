@@ -17,13 +17,30 @@ namespace Repository
             {
                 List<Pedido> Lista = new List<Pedido>();
                 StreamReader Lector = new StreamReader(Ruta);
+                while (!Lector.EndOfStream)
+                {
+                    Lista.Add(Mappear(Lector.ReadLine));
+                }
+                Lector.Close();
+                return Lista;
 
             }
             catch (Exception)
             {
 
-                throw;
+                return null;
             }
+        }
+
+        private Pedido Mappear(string linea)
+        {
+            Pedido Usuario = new Pedido();
+            //var aux = linea.Split(';');
+
+            Usuario.Libro = linea.Split(';')[0];
+            Usuario.Estudiante = linea.Split(';')[1];
+            
+            return Usuario;
         }
 
         public void Save(Pedido pedido)
