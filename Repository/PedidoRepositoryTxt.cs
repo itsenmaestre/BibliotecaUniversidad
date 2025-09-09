@@ -19,7 +19,7 @@ namespace Repository
                 StreamReader Lector = new StreamReader(Ruta);
                 while (!Lector.EndOfStream)
                 {
-                    Lista.Add(Mappear(Lector.ReadLine));
+                    Lista.Add(Mappear(Lector.ReadLine()));
                 }
                 Lector.Close();
                 return Lista;
@@ -34,18 +34,24 @@ namespace Repository
 
         private Pedido Mappear(string linea)
         {
-            Pedido Usuario = new Pedido();
-            //var aux = linea.Split(';');
+            Pedido pedido = new Pedido();
+            var aux = linea.Split(';');
 
-            Usuario.Libro = linea.Split(';')[0];
-            Usuario.Estudiante = linea.Split(';')[1];
-            
-            return Usuario;
+            pedido.Libro = linea.Split(';')[0];
+            pedido.Estudiante = linea.Split(';')[1];
+
+            return pedido;
         }
+
+       
 
         public void Save(Pedido pedido)
         {
-            throw new NotImplementedException();
+            using (StreamWriter escribir = new StreamWriter(Ruta, true))
+            {
+                
+                escribir.WriteLine($"{pedido.Id};{pedido.Estudiante};{pedido.Libro};{pedido.Fecha}");
+            }
         }
     }
 }
