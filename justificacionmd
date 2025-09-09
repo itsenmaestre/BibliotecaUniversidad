@@ -1,0 +1,10 @@
+Justificación GRASP
+
+Justificación 1: Cohesión
+Cada clase tiene una responsabilidad clara
+Pedido: solo representa los datos del pedido
+PedidoRepositoryTxt: se encarga de guardar y leer pedidos desde archivo
+
+Justificación 2: Acoplamiento
+Si cambiamos TXT por base de datos la lógica no cambia
+
